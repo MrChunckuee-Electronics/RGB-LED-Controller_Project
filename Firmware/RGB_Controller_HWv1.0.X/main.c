@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
- *      RGB_Lamp: Iluminación de escritorio con tiras LED RGB
+ *      RGB_Lamp: IluminaciÃ³n de escritorio con tiras LED RGB
  *
  *******************************************************************************
  * FileName:        main.c
  * Processor:       PIC18F25K22
  * Complier:        XC8 v2.20 & MPLAB X IDE v5.35
- * Author:          Pedro Sánchez (MrChunckuee)
+ * Author:          Pedro SÃ¡nchez (MrChunckuee)
  * Blog:            http://mrchunckuee.blogspot.com/
  * Email:           mrchunckuee.psr@gmail.com
  * Description:     Proyecto controlador de tiras LED RGB usadas para la iluminacion
@@ -14,8 +14,8 @@
  *******************************************************************************
  *          Revision history
  * Rev.         Date            Comment
- *  v0.0.1      07/05/2019      - Creación del proyecto,pruebas  basicas del FW.
- *  v1.0.0      02/08/2020      - Pruebas con la controladora RGB v1.0 emapeo de pines
+ *  v0.0.1      07/05/2019      - CreaciÃ³n del proyecto,pruebas  basicas del FW.
+ *  v1.0.0      02/08/2020      - Pruebas con la controladora RGB v1.0 y remapeo de pines
  *                              - Se agrego funciones para encoder rotativo y demo de colores.
  ******************************************************************************/
 

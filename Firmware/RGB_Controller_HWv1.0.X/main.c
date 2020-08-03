@@ -29,6 +29,7 @@ void main(void) {
     while(1){
         ENCODER_SwitchRead();
         IO_ENCODERSetColors();
+        //Descomentar para ver el demo.
 //        LEDRGB_ColorDemo();
     }
 }

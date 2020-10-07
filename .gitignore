@@ -1,0 +1,12 @@
+Firmware/RGB_Controller_HWv1.0.X/build/
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.cmf
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.elf
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.hxl
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.lst
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.map
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.mum
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.o
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.rlf
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.sdb
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.sym
+Firmware/RGB_Controller_HWv1.0.X/dist/default/production/*.xml

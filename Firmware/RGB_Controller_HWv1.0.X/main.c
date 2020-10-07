@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- *      RGB_Lamp: Iluminación de escritorio con tiras LED RGB
+ *      RGB_Lamp: Iluminacion de escritorio con tiras LED RGB
  *
  *******************************************************************************
  * FileName:        main.c

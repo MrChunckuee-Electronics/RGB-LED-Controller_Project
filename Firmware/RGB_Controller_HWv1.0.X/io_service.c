@@ -13,11 +13,10 @@ uint8_t PWMDutty[4]; // Red, Green, Blue
 uint8_t levelColor;
 uint8_t color = 0;
 uint16_t ticksRGB = 0;
-
-//bool encoderStatus = 0;
+uint8_t count_sw = 0;
 
 unsigned char colors[NUMBER_OF_COLORS][3] = {
-        {0,     0,      0},     //Black
+        //{0,     0,      0},     //Black
         {255,   255,    255},   //Blanco
         {255,   0,      0},     //Rojo
         {223,   32,     0},
@@ -45,8 +44,15 @@ unsigned char colors[NUMBER_OF_COLORS][3] = {
         {223,   0,      32}
         };
 
+/*******************************************************************************
+ * Function:        void PWM_Init(void)
+ * Description:     Configurarion del TMR0 para PWM de los LEDs
+ * Precondition:    None
+ * Parameters:      None
+ * Return Values:   None
+ * Remarks:         TMR0 = 39us
+ * ****************************************************************************/
 void PWM_Init(void){
-    //Configuración del TMR0 = 39us
     T0CONbits.TMR0ON = 1; //TMR0 On
     T0CONbits.T08BIT = 1; //8 bits
     T0CONbits.T0CS = 0;
@@ -60,14 +66,33 @@ void PWM_Init(void){
     INTCON2bits.TMR0IP = 1; // TMR0 Overflow Interrupt High Priority
 }
 
+/*******************************************************************************
+ * Function:        void PWM_SetDutty( uint8_t colorRed, 
+ *                                     uint8_t colorGreen, 
+ *                                     uint8_t colorBlue   )
+ * Description:     Esta funcion carga los valores RGB al PWM Dutty.
+ * Precondition:    None
+ * Parameters:      uint8_t colorRed - Valor del dutty Red
+ *                  uint8_t colorGreen - Valor del dutty Green
+ *                  uint8_t colorBlue - Valor del dutty Blue
+ * Return Values:   None
+ * Remarks:         None
+ * ****************************************************************************/
 void PWM_SetDutty(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue){
     PWMDutty[ticksRed] = colorRed;
     PWMDutty[ticksGreen] = colorGreen;
     PWMDutty[ticksBlue] = colorBlue;
 }
 
+/*******************************************************************************
+ * Function:        void ENCODER_Init(void)
+ * Description:     Cofig PORT change interrupt (RB4 & RB5)
+ * Precondition:    None
+ * Parameters:      None
+ * Return Values:   None
+ * Remarks:         None
+ * ****************************************************************************/
 void ENCODER_Init(void){  
-    //Cofig PORT change interrupt (RB4 & RB5)
     INTCON2bits.RBPU = 1;   //Disables Pull-Ups
 //    WPUBbits.WPUB4 = 0;     //RB4
 //    WPUBbits.WPUB5 = 0;     //RB5
@@ -78,23 +103,80 @@ void ENCODER_Init(void){
     IOCBbits.IOCB5 = 1;
 }
 
+/*******************************************************************************
+ * Function:        void ENCODER_SwitchRead(void)
+ * Description:     Funcion para leer el estado del switch del encoder.
+ * Precondition:    None
+ * Parameters:      None
+ * Return Values:   None
+ * Remarks:         None
+ * ****************************************************************************/
 void ENCODER_SwitchRead(void){
     if(encoderTerminalSW == 0){
-        ctrlBarra1 ^= 1;
-        ctrlBarra2 ^= 1;
-        ctrlBarra3 ^= 1;
-        ctrlBarra4 ^= 1;
-        __delay_ms(500);
+        __delay_ms(300);
+        count_sw++;
+        switch(count_sw){
+            case 1:
+                ctrlBarra1 = 1;
+                ctrlBarra2 = 1;
+                ctrlBarra3 = 1;
+                ctrlBarra4 = 0;
+                break;
+            case 2:
+                ctrlBarra1 = 1;
+                ctrlBarra2 = 1;
+                ctrlBarra3 = 0;
+                ctrlBarra4 = 0;
+                break;
+            case 3:
+                ctrlBarra1 = 1;
+                ctrlBarra2 = 0;
+                ctrlBarra3 = 0;
+                ctrlBarra4 = 0;
+                break;
+            case 4:
+                ctrlBarra1 = 0;
+                ctrlBarra2 = 0;
+                ctrlBarra3 = 0;
+                ctrlBarra4 = 0;
+                break;
+            case 5:
+                ctrlBarra1 = 1;
+                ctrlBarra2 = 1;
+                ctrlBarra3 = 1;
+                ctrlBarra4 = 1;
+                count_sw = 0;
+                break;
+            default:
+                break;
+        }
     }
 }
 
-void IO_ENCODERSetColors(void){       
+/*******************************************************************************
+ * Function:        void ENCODER_SetColors(void)
+ * Description:     Funcion para cargar el dutty de cada color, dependiendo de 
+ *                  la pocicion del encoder.
+ * Precondition:    None
+ * Parameters:      None
+ * Return Values:   None
+ * Remarks:         None
+ * ****************************************************************************/
+void ENCODER_SetColors(void){       
     uint16_t currentLedNumber = rotary.encoderPosition;
     PWM_SetDutty(colors[currentLedNumber][ticksRed],    \
                  colors[currentLedNumber][ticksGreen],  \
                  colors[currentLedNumber][ticksBlue]);
 }
 
+/*******************************************************************************
+ * Function:        void LEDRGB_ColorDemo(void)
+ * Description:     Funcion demo, barrido de colores y variacion de dutty.
+ * Precondition:    None
+ * Parameters:      None
+ * Return Values:   None
+ * Remarks:         None
+ * ****************************************************************************/
 void LEDRGB_ColorDemo(void){
     switch (color){
         case 0:

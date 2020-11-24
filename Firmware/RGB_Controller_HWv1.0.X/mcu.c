@@ -7,6 +7,14 @@
 
 #include "main.h"
 
+/*******************************************************************************
+ * Function:        void MCU_Init(void)
+ * Description:     Esta funcion inicializa el microcontrolador
+ * Precondition:    None
+ * Parameters:      None
+ * Return Values:   None
+ * Remarks:         None
+ * ****************************************************************************/
 void MCU_Init(void){
     //Puertos digitales
     ANSELA = 0;
@@ -29,10 +37,10 @@ void MCU_Init(void){
     LATB = 0x00;
     LATC = 0x00;
     
-    ctrlBarra1 = 0;
-    ctrlBarra2 = 0;
-    ctrlBarra3 = 0;
-    ctrlBarra4 = 0;
+    ctrlBarra1 = 1;
+    ctrlBarra2 = 1;
+    ctrlBarra3 = 1;
+    ctrlBarra4 = 1;
     
     PWMDutty[ticksRed] = 0;
     PWMDutty[ticksGreen] = 0;

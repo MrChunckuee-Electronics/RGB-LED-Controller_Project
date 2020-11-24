@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mrchu_000/Dropbox/Firmware/RGB_Controller_HWv1.0.X/main.c</file>
-            <file>file:/C:/Users/mrchu_000/Dropbox/Firmware/RGB_Controller_HWv1.0.X/main.h</file>
+            <file>file:/C:/GitHub/RGB-LED-Controller_Project/Firmware/RGB_Controller_HWv1.0.X/main.h</file>
+            <file>file:/C:/GitHub/RGB-LED-Controller_Project/Firmware/RGB_Controller_HWv1.0.X/io_service.h</file>
+            <file>file:/C:/GitHub/RGB-LED-Controller_Project/Firmware/RGB_Controller_HWv1.0.X/main.c</file>
+            <file>file:/C:/GitHub/RGB-LED-Controller_Project/Firmware/RGB_Controller_HWv1.0.X/io_service.c</file>
+            <file>file:/C:/GitHub/RGB-LED-Controller_Project/Firmware/RGB_Controller_HWv1.0.X/mcu.c</file>
         </group>
     </open-files>
 </project-private>
